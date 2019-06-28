@@ -9,7 +9,7 @@
         <div class="navbar-form navbar-right navbar-item-container">
 
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="search">
+            <input type="text" class="form-control" placeholder="جستجو" name="search">
             <div class="input-group-btn">
               <button class="btn btn-default">
                 <i class="glyphicon glyphicon-search"></i>
@@ -50,5 +50,15 @@
   .navbar-item-container{
     margin-right: 50px;
   }
+
+  input {
+    direction: rtl;
+  }
+  input:focus {
+    border-color: rgb(255, 175, 32);
+    box-shadow: 0 1px 1px rgba(255, 175, 32,0.5) inset, 0 0 8px rgba(255, 175, 32, 0.5);
+    outline: 0 none;
+  }
+
 
 </style>

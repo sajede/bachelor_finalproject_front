@@ -29,8 +29,13 @@
     direction: rtl;
   }
 
+  li >a {
+    color: rgb(68, 82, 168);
+  }
+
   li >a:hover {
-    background-color: rgb(255, 175, 32, 0.2);
+    color: rgb(68, 82, 168);
+    background-color: rgba(255, 175, 32, 0.2);
   }
 
 </style>
