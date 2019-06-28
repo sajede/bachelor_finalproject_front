@@ -18,10 +18,12 @@
                      placeholder="ایمیل"
                      required=""
                      v-model="user.emailAddress"
+                     @focusout="validateEmail"
               />
+              <p class="error">{{ error }}</p>
             </div>
             <div class="col-sm-12 text-center">
-              <button class="btn font" type="submit">ارسال رمز عبور</button>
+              <button class="btn font" type="submit" @click.prevent="forgetBtn">ارسال رمز عبور</button>
             </div>
 
           </div>
@@ -41,16 +43,59 @@
       return {
         user: {
           id: '',
-          userName: '',
+          username: '',
           name: '',
-          family:'',
+          family: '',
           emailAddress: '',
-          department:'',
           password: '',
-          role: ''
-        }
+          role: 'user'
+        },
+        error: '',
       }
     },
+    methods: {
+      validateEmail(){
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let check = re.test(this.user.emailAddress);
+        if (check){
+          this.error = '';
+        }
+        else{
+          this.error = 'ایمیل وارد شده صحیح نیست';
+        }
+        return check;
+      },
+
+      forgetBtn(){
+        if (this.validateEmail()){
+          //forget password sending
+          this.$http.post('user/register',
+            this.user,
+            {
+              headers: {'SessionID': this.$store.getters.sessionId}
+            }).then(
+            response =>{
+              // success callback
+              response.json().then(
+                data => {
+                  if (data.error = true){
+                    this.errorAlert=data;
+                  }
+                  else{
+                    this.$store.commit('user',data)
+                  }
+                }
+              )
+            },
+            error => {
+              // error callback
+            });
+
+        }
+
+      },
+
+    }
   }
 </script>
 
@@ -97,6 +142,14 @@
     border-radius: 4px ;
   }
 
+  .error {
+    direction: rtl;
+    font-size: 10px;
+    margin: -15px auto 0;
+    width: 70%;
+    color: red;
+  }
+
   button{
     margin: 10px 0;
     border-radius: 4px;
@@ -106,7 +159,7 @@
     height: 34px;
   }
   button:hover {
-    background-color: rgb(48, 63, 159, 0.9);
+    background-color: rgba(48, 63, 159, 0.9);
     color: white;
   }
 

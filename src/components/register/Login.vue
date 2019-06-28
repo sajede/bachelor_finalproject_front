@@ -1,14 +1,6 @@
 <template>
   <div class="panel">
     <div class="row form">
-
-      <div class="col-md-12" v-if="errorAlert.show">
-        <div class="alert alert-danger alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          <p>{{ errorAlert.text }}</p>
-        </div>
-      </div>
       
       <div class="col-md-6 hidden-sm">
         <img class="form-picture" src="../../assets/img/login-pic.png">
@@ -20,6 +12,7 @@
             <h6 class="col-sm-12 font title">ورود</h6>
 
             <div class="col-sm-12">
+              <p class="error"> {{ error }}</p>
               <input type="text"
                      class="form-control font"
                      name="username"
@@ -59,16 +52,14 @@
       return {
         user: {
           id: '',
-          userName: '',
+          username: '',
+          name: '',
+          family: '',
           emailAddress: '',
-          department:'',
           password: '',
-          role: ''
+          role: 'user'
         },
-        errorAlert: {
-          show: false,
-          text: ''
-        }
+        error: 'نام کاربری یا رمز عبور اشتباه است',
       }
     },
     methods : {
@@ -83,7 +74,7 @@
             response.json().then(
               data => {
                 if (data.error = true){
-                  this.errorAlert=data;
+                  this.error = data;
                 }
                 else{
                   this.$store.commit('user',data)
@@ -145,6 +136,14 @@
     border-radius: 4px ;
   }
 
+  .error {
+    direction: rtl;
+    font-size: 10px;
+    margin: 10px auto;
+    width: 70%;
+    color: red;
+  }
+
   button{
     margin: 10px 0;
     border-radius: 4px;
@@ -154,7 +153,7 @@
     height: 34px;
   }
   button:hover {
-    background-color: rgb(48, 63, 159, 0.9);
+    background-color: rgba(48, 63, 159, 0.9);
     color: white;
   }
 
