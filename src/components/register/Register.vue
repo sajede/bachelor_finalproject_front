@@ -2,7 +2,6 @@
   <div class="panel">
     <div class="row form">
 
-
       <div class="col-md-12" v-if="errorAlert.show">
         <div class="alert alert-danger alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a>
@@ -36,16 +35,7 @@
                      required=""
                      v-model="user.emailAddress"
               />
-              <select
-                name="department"
-                class="form-control font"
-                v-model="user.department">
-                <option
-                  v-for="dep in departments"
-                  :key="dep"
-                >{{ dep }}</option>
-
-              </select>
+              
               <input type="password"
                      class="form-control font"
                      name="password"
@@ -108,19 +98,36 @@
             name: '',
             family: '',
             emailAddress: '',
-            department:'',
             password: '',
-            role: ''
+            role: 'user'
           },
-          departments: [],
           errorAlert: {
             show: false,
             text: ''
-          }
-        }
+          },
+
+
+      }
       },
+
       methods : {
+
+        validateEmail(){
+            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            return re.test(this.user.emailAddress);
+        },
+
         registerBtn(){
+          if (this.validateEmail()){
+            this.register();
+          }
+          else{
+            this.errorAlert.text = 'invalid mail!';
+            this.errorAlert.show =true;
+          }
+        },
+
+        register(){
           this.$http.post('user/register',
             this.user,
             {
