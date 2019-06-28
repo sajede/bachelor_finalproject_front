@@ -7,7 +7,6 @@ import NewCase from "./components/User/NewCase";
 import ListCase from "./components/User/ListCase";
 import Profile from "./components/User/Profile";
 import SeeCase from "./components/User/SeeCase";
-import Refer from "./components/User/Refer";
 
 export const routes = [
   { path: '', component: Home},
@@ -19,14 +18,13 @@ export const routes = [
       { path: 'new', component: NewCase},
       { path: 'list/:page', component: ListCase},
       { path: 'case/:id', component: SeeCase},
-      { path: 'refer/:id', component: Refer}
     ]},
   { path: '/admin', component: User, children:[
       { path: '', component: Profile},
       { path: 'newcase', component: NewCase},
       { path: 'list/:page', component: ListCase},
       { path: 'case/:id', component: SeeCase},
-      { path: 'refer/:id', component: Refer}
+      // { path: 'refer/:id', component: Refer}
     ]},
   { path: '*', redirect: '/'}
 ];

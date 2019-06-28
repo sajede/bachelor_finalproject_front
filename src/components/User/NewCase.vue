@@ -36,7 +36,7 @@
             <textarea id="description" rows="8" v-model="caseParam.comment"/>
           </div>
           <div class="col-md-12">
-            <input type="file" id="file" class="inputfile" v-on="caseParam.comment"/>
+            <input type="file" id="file" class="inputfile" v-on="caseParam.file"/>
             <label for="file">آپلود کد</label>
           </div>
         </div>
@@ -73,6 +73,7 @@
           count: '',
           price: '',
           comment: '',
+          file: ''
         },
         types : ['رایگان','طلایی']
       }

@@ -5,6 +5,7 @@ const state = {
     sendDate: 'dd/mm/yyyy',
     proceedingStatus: 'در انتظار جواب',
     comment: '',
+    url: ''
   }
 };
 
