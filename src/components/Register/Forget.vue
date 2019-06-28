@@ -2,14 +2,6 @@
   <div class="panel">
     <div class="row form">
 
-      <div class="col-md-12" v-if="errorAlert.show">
-        <div class="alert alert-danger alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          <p>{{ errorAlert.text }}</p>
-        </div>
-      </div>
-      
       <div class="col-md-6 hidden-sm">
         <img class="form-picture" src="../../assets/img/login-pic.png">
       </div>
@@ -17,29 +9,19 @@
       <div class="col-md-6 col-sm-12">
         <form class="row">
           <div>
-            <h6 class="col-sm-12 font title">ورود</h6>
+            <h6 class="col-sm-12 font title">فراموشی رمز عبور</h6>
 
             <div class="col-sm-12">
-              <input type="text"
+              <input type="email"
                      class="form-control font"
-                     name="username"
-                     placeholder="نام کاربری"
+                     name="email"
+                     placeholder="ایمیل"
                      required=""
-                     autofocus=""
-                     v-model="user.userName"
+                     v-model="user.emailAddress"
               />
-              <input type="password"
-                     class="form-control font"
-                     name="password"
-                     placeholder="رمز عبور"
-                     required=""
-                     v-model="user.password"/>
             </div>
             <div class="col-sm-12 text-center">
-              <button class="btn font" type="submit" @click.prevent="loginBtn">ورود</button>
-            </div>
-            <div class="col-sm-12 text-center">
-              <router-link to="/Forget" tag="a" class="font">فراموشی رمز عبور</router-link>
+              <button class="btn font" type="submit">ارسال رمز عبور</button>
             </div>
 
           </div>
@@ -54,55 +36,25 @@
 
 <script>
   export default {
-    name: "Login",
+    name: "Forget",
     data(){
       return {
         user: {
           id: '',
           userName: '',
+          name: '',
+          family:'',
           emailAddress: '',
           department:'',
           password: '',
           role: ''
-        },
-        errorAlert: {
-          show: false,
-          text: ''
         }
       }
     },
-    methods : {
-      loginBtn(){
-        this.$http.post('user/login',
-          this.user,
-          {
-            headers: {'SessionID': this.$store.getters.sessionId}
-          }).then(
-          response =>{
-            // success callback
-            response.json().then(
-              data => {
-                if (data.error = true){
-                  this.errorAlert=data;
-                }
-                else{
-                  this.$store.commit('user',data)
-                }
-              }
-            )
-          },
-          error => {
-            // error callback
-          });
-      },
-    }
   }
 </script>
 
 <style scoped>
-  .alert {
-    margin: 2vh 0;
-  }
 
   .panel{
     background-image: url('../../assets/img/login-bg.png');

@@ -1,38 +1,25 @@
-import Home from './components/home/Home.vue';
-
-import Login from './components/register/Login.vue';
-import Register from './components/register/Register.vue';
-import ForgetPassword from "./components/register/ForgetPassword";
-
-import User from './components/user/User.vue';
-import Edit from './components/user/Edit.vue';
-import UserAllOrders from './components/user/AllOrders.vue';
-import Help from './components/user/Help.vue';
-import NewOrder from './components/user/NewOrder.vue';
-import UserOrder from './components/user/Order.vue';
-
-import Admin from './components/admin/Admin.vue';
-import AdminAllOrders from './components/admin/AllOrders.vue';
-import NewOrders from './components/admin/NewOrders.vue';
-import Response from './components/admin/Response.vue';
-import AdminOrder from './components/admin/Order.vue';
+import Home from "./components/Home/Home";
+import Register from "./components/Register/Register";
+import Login from "./components/Register/Login";
+import Forget from "./components/Register/Forget";
+import User from "./components/User/User";
+import NewCase from "./components/User/NewCase";
+import ListCase from "./components/User/ListCase";
+import Profile from "./components/User/Profile";
+import SeeCase from "./components/User/SeeCase";
+import Refer from "./components/User/Refer";
 
 export const routes = [
   { path: '', component: Home},
-  { path: '/login', component: Login},
   { path: '/register', component: Register},
-  { path: '/forget', component: ForgetPassword},
+  { path: '/login', component: Login},
+  { path: '/forget', component: Forget},
   { path: '/user', component: User, children:[
-      { path: '', component: Edit},
-      { path: 'new', component: NewOrder},
-      { path: 'all', component: UserAllOrders},
-      { path: ':id/order', component: UserOrder},
-      { path: 'help', component: Help}
+      { path: '', component: Profile},
+      { path: 'newcase', component: NewCase},
+      { path: 'list/:page', component: ListCase},
+      { path: 'case/:id', component: SeeCase},
+      { path: 'refer/:id', component: Refer}
     ]},
-  { path: '/admin', component: Admin, children:[
-      { path: '', component: NewOrders},
-      { path: 'all', component: AdminAllOrders},
-      { path: ':id/order', component: AdminOrder},
-      { path: ':id/response', component: Response},
-    ]},
+  { path: '*', redirect: '/'}
 ];

@@ -1,43 +1,62 @@
 <template>
-  <div>
-    <footer class="section footer-classic context-dark bg-image" style="background: #222222;">
-      <div class="container">
-        <div class="row row-30">
-          <div class="col-md-4 col-xl-5">
-            <div class="pr-xl-4">
-              <router-link to="/" tag="a" class="brand"><img class="brand-logo-light" src="../assets/img/sbu.png" alt=""></router-link>
-              <p>smart automatic exploit generation</p>
-              <p class="rights"><span>All Rights Belong to Shahid Beheshti University</span></p>
+    <div>
+      <footer>
+        <div class="footer-container">
+          <div class="footer-contact">
+            <div class="footer-social-accounts">
+              <a href="#">
+                <img src="../assets/img/facebook-icon.png" />
+              </a>
+              <a href="#">
+                <img src="../assets/img/twitter-icon.png" />
+              </a>
+              <a href="#">
+                <img src="../assets/img/linkedin-icon.png" />
+              </a>
+            </div>
+            <div class="footer-location-info">
+              <div>
+                <div class="footer-info-location">
+                  <p class="footer-info-location-p font">
+                    <span>     تهران، اتوبان چمران، بلوار یمن، میدان دانشجو، دانشگاه شهید بهشتی، دانشکده مهندسی کامپیوتر</span>
+                  </p>
+                </div>
+                <div class="footer-info-location-icon">
+                  <img src="../assets/img/pinmap-icon.png" />
+                </div>
+              </div>
+            </div>
+            <div class="footer-contact-info">
+              <div>
+                <div class="footer-info-location">
+                  <p class="footer-info-location-p font">
+                    <span class="footer-phone">09126018608</span>
+                    <span >09118866836</span>
+                  </p>
+                </div>
+                <div class="footer-info-location-icon">
+                  <img src="../assets/img/contact-icon.png" />
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <h5>Contact us</h5>
-            <dl class="contact-list">
-              <dt>Address:</dt>
-              <dd>Tehran, District 1, Daneshjou Boulevard </dd>
-            </dl>
-            <dl class="contact-list">
-              <dt>email:</dt>
-              <dd><router-link to="mailto:secureLab@gmail.com" tag="a">secureLab@gmail.com</router-link></dd>
-            </dl>
-            <dl class="contact-list">
-              <dt>phones:</dt>
-              <dd><router-link to="" tag="a">+91 7568543012 </router-link><span>or</span><router-link to="" tag="a"> +91 9571195353</router-link></dd>
-            </dl>
-          </div>
-          <div class="col-md-4 col-xl-3">
-            <h5>Social links</h5>
-            <ul class="nav-list">
-              <router-link to="" tag="li"><a><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></router-link>
-              <router-link to="" tag="li"><a><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></router-link>
-              <router-link to="" tag="li"><a><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></router-link>
-              <router-link to="" tag="li"><a><span class="icon mdi mdi-youtube-play"></span><span>google+</span></a></router-link>
-            </ul>
+          <div class="footer-info">
+            <div>
+              <div class="footer-info-img-container">
+                <div>
+                  <img src="../assets/img/asa-logo.png" />
+                  <img src="../assets/img/sbu-logo.png" />
+                </div>
+              </div>
+            </div>
+            <div class="footer-desc-p font">
+              <p>  سامانه رسیدگی به اعتراضات و پیشنهادات دانشجویان </p>
+              <p>دانشگاه شهید بهشتی استان تهران</p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
+    </div>
 </template>
 
 <script>
@@ -47,55 +66,192 @@
 </script>
 
 <style scoped>
-  footer {
-    margin-top: 10px;
+  footer{
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffaf20;
+    z-index: 999;
+    max-height: 255px;
   }
 
-  row {
-    margin: 0;
-    padding: 0;
+  .footer-container{
+    position: relative;
+    display: flex;
+    padding: 30px 70px 30px 70px;
   }
 
-  img {
-    width: 120px;
-    height: 120px;
-    padding: 2%;
+  .footer-contact{
+    flex : 0 0 65%;
   }
 
-  .context-dark, .bg-gray-dark, .bg-primary {
-    color: rgba(255, 255, 255, 0.8);
+  .footer-info-img-container{
+    display: flex;
+    width: 100%;
   }
 
-  .footer-classic a, .footer-classic a:focus, .footer-classic a:active {
-    color: #ffffff;
-  }
-  .nav-list li {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  .footer-info-img-container img{
+    width: 95px;
+    height: 95px;
+    margin: 5px
   }
 
-  .nav-list li a:hover:before {
-    margin-left: 0;
-    opacity: 1;
-    visibility: visible;
+  .footer-desc-p{
+    display: flow-root;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
   }
 
-  ul, ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .footer-info-img-container > div{
+    text-align:center;
+    margin:auto;
   }
 
-  .nav-list li a:before {
-    content: "\f14f";
-    font: 400 21px/1 "Material Design Icons";
-    color: #4d6de6;
-    display: inline-block;
-    vertical-align: baseline;
-    margin-left: -28px;
-    margin-right: 7px;
-    opacity: 0;
-    visibility: hidden;
-    transition: .22s ease;
+  .footer-info{
+    flex: 1;
+    width: 100%;
+    display: flow-root;
   }
+
+  .footer-info > div{
+    width: 100%;
+    display: flow-root;
+  }
+
+  .footer-social-accounts{
+    width: 100%;
+    display: flow-root;
+  }
+
+  .footer-social-accounts img{
+    float: right;
+    height: 35px;
+    margin: 15px;
+  }
+
+  .footer-contact-info img{
+    float: right;
+    height: 35px;
+    margin: 15px;
+  }
+
+  .footer-location-info{
+    width: 100%;
+    display: flow-root;
+  }
+
+  .footer-contact-info{
+    width: 100%;
+    display: flow-root;
+  }
+
+  .footer-contact-info > div{
+    display: flex;
+  }
+
+  .footer-phone{
+    padding-right: 50px
+  }
+
+  .footer-location-info > div{
+    display: flex;
+  }
+
+  .footer-info-location{
+    flex: 0 0 90%;
+    text-align: right;
+  }
+
+  .footer-info-location-p{
+    padding-top: 15px;
+    float: right;
+    text-align: right;
+  }
+
+  .footer-info-location-icon{
+    flex: 1;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .footer-info-location{
+      flex: 0 0 87%;
+      text-align: right;
+    }
+
+    footer{
+      max-height: 275px;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    .footer-info-location{
+      flex: 0 0 83%;
+      text-align: right;
+    }
+
+    footer{
+      max-height: 275px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer-info-location{
+      flex: 0 0 78%;
+      text-align: right;
+    }
+
+    .footer-container{
+      position: relative;
+      display: flex;
+      padding: 30px 30px 30px 30px;
+    }
+
+    .footer-phone{
+      padding-right: 30px
+    }
+
+    footer{
+      max-height: 295px;
+    }
+
+    .footer-info-img-container img{
+      width: 80px;
+      height: 80px;
+      margin: 5px
+    }
+  }
+
+  @media screen and (max-width:605px) {
+    .footer-info-img-container img{
+      width: 60px;
+      height: 60px;
+      margin: 5px
+    }
+  }
+
+  @media screen and (max-width:521px) {
+    .footer-info-location{
+      flex: 0 0 75%;
+      text-align: right;
+    }
+
+    .footer-phone{
+      padding-right: 20px
+    }
+
+    footer{
+      max-height: 310px;
+    }
+  }
+
+
+  .footer-location-info img{
+    float: right;
+    height: 35px;
+    margin: 15px;
+  }
+
 </style>
