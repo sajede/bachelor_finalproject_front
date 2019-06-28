@@ -1,16 +1,26 @@
 <template>
     <div>
       <nav>
+
         <router-link to="/" tag="a">
           <img src="../assets/img/logo.png" class="logo" />
         </router-link>
-        <div class="navbar-item-container">
-<!--          <router-link to="/" tag="a">-->
-<!--            <img src="../assets/img/navbar-serach.png" class="navbar-item" />-->
-<!--          </router-link>-->
-          <router-link to="/" tag="a">
-            <img src="../assets/img/navbar-account.png" class="navbar-item" />
+
+        <div class="navbar-form navbar-right navbar-item-container">
+
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <div class="input-group-btn">
+              <button class="btn btn-default">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <router-link to="/register" tag="button" class="btn btn-default">
+            <i class="glyphicon glyphicon-user"></i>
           </router-link>
+
         </div>
       </nav>
     </div>
@@ -23,24 +33,18 @@
 </script>
 
 <style scoped>
+
   nav{
-    height: 70px;
+    height: 50px;
     width: 100%;
     background-color: white;
-    position: relative;
     border-bottom: solid 1px #979797;
   }
 
   .logo{
     float: left;
-    height: 50px;
-    margin: 10px 10px 10px 50px;
-  }
-
-  .navbar-item{
-    float: right;
-    height: 35px;
-    margin: 18px;
+    max-height: 35px;
+    margin: 10px 10px 0 30px;
   }
 
   .navbar-item-container{
