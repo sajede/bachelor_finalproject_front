@@ -16,6 +16,13 @@ export const routes = [
   { path: '/forget', component: Forget},
   { path: '/user', component: User, children:[
       { path: '', component: Profile},
+      { path: 'new', component: NewCase},
+      { path: 'list/:page', component: ListCase},
+      { path: 'case/:id', component: SeeCase},
+      { path: 'refer/:id', component: Refer}
+    ]},
+  { path: '/admin', component: User, children:[
+      { path: '', component: Profile},
       { path: 'newcase', component: NewCase},
       { path: 'list/:page', component: ListCase},
       { path: 'case/:id', component: SeeCase},
