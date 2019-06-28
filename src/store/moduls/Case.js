@@ -1,11 +1,9 @@
 const state = {
   caseParam: {
-    sendDate: 'dd/mm/yyyy',
-    referrerNumbers: 'ارجاع به',
+    type: 'طلایی',
     topic: 'موضوع',
-    type: '',
-    proceedingStatus: 'باز',
-    satisfactionStatus: '',
+    sendDate: 'dd/mm/yyyy',
+    proceedingStatus: 'در انتظار جواب',
     comment: '',
   }
 };

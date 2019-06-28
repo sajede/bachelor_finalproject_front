@@ -4,58 +4,51 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3 class="title font">ثبت مورد</h3>
+          <h3 class="title font">ثبت کد جدید</h3>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6 ">
-          <label>نوع مورد</label>
-          <select
-            name="fname"
-            class="form-control font"
-            v-model="caseParam.type">
-            <option
-              v-for="type in types"
-              :key="type"
-            >{{ type }}</option>
-
-          </select>
-        </div>
         <div class="col-md-6">
-          <label>دریافت کننده</label>
-          <select
-            name="fname"
-            class="form-control font"
-            v-model="caseParam.referrer">
-            <option
-              v-for="ref in referrers"
-              :key="ref"
-            >{{ ref }}</option>
 
-          </select>
+        </div>
+
+        <div class="col-md-6 row">
+          <div class="col-md-12">
+            <label>نوع سفارش</label>
+            <select
+              name="type"
+              class="form-control font"
+              v-model="caseParam.type">
+              <option
+                v-for="type in types"
+                :key="type"
+              >{{ type }}</option>
+
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="topic">عنوان</label>
+            <input type="text" id="topic" v-model="caseParam.topic">
+          </div>
+          <div class="col-md-12">
+            <label for="description">توضیحات</label>
+            <textarea id="description" rows="8" v-model="caseParam.comment"/>
+          </div>
+          <div class="col-md-12">
+            <input type="file" id="file" class="inputfile" v-on="caseParam.comment"/>
+            <label for="file">آپلود کد</label>
+          </div>
         </div>
       </div>
-
       <div class="row">
-        <div class="col-md-6"/>
-        <div class="col-md-6">
-          <label for="topic">عنوان</label>
-          <input type="text" id="topic" v-model="caseParam.topic">
-        </div>
 
       </div>
 
-      <div class="row">
-        <div class="col-md-6"/>
-        <div class="col-md-6 ">
-          <label for="description">شرح مورد</label>
-          <textarea id="description" rows="12" v-model="caseParam.comment"/>
-        </div>
-      </div>
       <div class="col-md-12 text-center">
-        <button class="btn" id="email">ثبت مورد</button>
+        <button class="btn" @click.prevent="sendBtn">ثبت کد</button>
       </div>
+
 
 
     </form>
@@ -68,25 +61,32 @@
     data(){
       return {
         caseParam: {
-          sendDate: 'dd/mm/yyyy',
-          referrerNumbers: 'ارجاع به',
-          topic: 'موضوع',
           type: '',
-          proceedingStatus: 'باز',
-          satisfactionStatus: '',
+          topic: '',
+          sendDate: '',
+          proceedingStatus: '',
           comment: '',
         },
-        referrers : ['دکتر شمس','دکتر قوامی','دکتر علی اکبری'],
-        types : ['انتقاد','درخواست','پیشنهاد']
+        types : ['رایگان','طلایی']
       }
     },
+    methods: {
+      sendBtn(){
+
+      },
+    },
     mounted() {
-      this.user = this.$store.getters.userInfo;
+      this.caseParam = this.$store.getters.case;
     }
   }
 </script>
 
 <style scoped>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+
   row {
     direction: rtl;
   }
@@ -108,18 +108,38 @@
     color: #333333;
   }
 
-  input, textarea, select, option {
+  input, textarea, select, option, .inputfile + label {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
   }
 
-  select {
+  select, button {
     height: 40px;
+  }
+
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .inputfile + label {
+    cursor: pointer;
+    font-size: 1.25em;
+    color: rgb(48, 63, 159);
+    background-color: rgba(255, 175, 32,0.7);
+  }
+
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    background-color: rgba(255, 175, 32, 0.9);
   }
 
   label{
@@ -130,10 +150,11 @@
 
   button{
     color: white;
+    padding: 0 20px;
     background-color: rgb(48, 63, 159);
   }
   button:hover {
     color: white;
-    background-color: rgb(48, 63, 159, 0.9);
+    background-color: rgba(48, 63, 159, 0.9);
   }
 </style>
