@@ -37,7 +37,7 @@
 
             <div class="col-md-12">
               <label for="password">رمز عبور</label>
-              <input type="text" id="password" name="نام کاربری" v-model="user.password">
+              <input type="password" id="password" name="نام کاربری" v-model="user.password">
             </div>
 
             <div class="col-md-12">
@@ -97,7 +97,7 @@
     color: #333333;
   }
 
-  input[type='text'],input[type='email'],button {
+  input, button {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
