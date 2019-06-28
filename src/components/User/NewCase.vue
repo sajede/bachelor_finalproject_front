@@ -47,6 +47,7 @@
 
       <div class="col-md-12 text-center">
         <button class="btn" @click.prevent="sendBtn">ثبت کد</button>
+        <button class="btn" v-if="this.caseParam.type=='طلایی' && this.pack.count=='0'" @click.prevent="purchaseBtn">خرید پکیج طلایی</button>
       </div>
 
 
@@ -67,16 +68,28 @@
           proceedingStatus: '',
           comment: '',
         },
+        pack: {
+          name: '',
+          count: '',
+          price: '',
+          comment: '',
+        },
         types : ['رایگان','طلایی']
       }
     },
     methods: {
-      sendBtn(){
+      purchaseBtn(){
 
+      },
+      sendBtn(){
+        if (this.caseParam.type=='طلایی' && this.pack.count=='0'){
+
+        }
       },
     },
     mounted() {
       this.caseParam = this.$store.getters.case;
+      this.pack = this.$store.getters.pack;
     }
   }
 </script>
