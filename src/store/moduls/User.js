@@ -1,13 +1,12 @@
 const state = {
   user: {
-    id: '',
-    userName: 'm.sajede',
+    id: 'dsd48e',
+    username: 'm.sajede',
     name: 'ساجده',
     family: 'محمدی',
     emailAddress: 'm.sajede1375@gmail.com',
-    department:'کامپیوتر',
     password: '123456',
-    role: 'student'
+    role: 'user'
   }
 };
 

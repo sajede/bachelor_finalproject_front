@@ -2,14 +2,6 @@
   <div class="panel">
     <div class="row form">
 
-      <div class="col-md-12" v-if="errorAlert.show">
-        <div class="alert alert-danger alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          <p>{{ errorAlert.text }}</p>
-        </div>
-      </div>
-
       <div class="col-md-6 hidden-sm">
         <img class="form-picture" src="../../assets/img/register-pic.png">
       </div>
@@ -26,48 +18,31 @@
                      placeholder="نام کاربری"
                      required=""
                      autofocus=""
-                     v-model="user.userName"
+                     v-model="user.username"
+                     @focusout="validateUsername"
               />
+              <p class="error"> {{ error.username }}</p>
+
               <input type="email"
                      class="form-control font"
                      name="email"
                      placeholder="ایمیل"
                      required=""
                      v-model="user.emailAddress"
+                     @focusout="validateEmail"
               />
-              
+              <p class="error"> {{ error.emailAddress }}</p>
+
               <input type="password"
                      class="form-control font"
                      name="password"
                      placeholder="رمز عبور"
                      required=""
-                     v-model="user.password"/>
-              <div class="font radio-role form-group col-sm-8 col-sm-offset-2">
-                <nav class="nav nav-pills nav-justified">
-                  <li>
-                    <input
-                      type="radio"
-                      id="student"
-                      value="student"
-                      v-model="user.role">
-                    <label for="student"> دانشجو</label>
-                  </li><li>
-                  <input
-                    type="radio"
-                    id="professor"
-                    value="professor"
-                    v-model="user.role">
-                  <label for="professor"> استاد</label>
-                </li><li>
-                  <input
-                    type="radio"
-                    id="employee"
-                    value="employee"
-                    v-model="user.role">
-                  <label for="employee"> کارمند</label>
-                </li>
-                </nav>
-              </div>
+                     v-model="user.password"
+                     @focusout="validatePassword"
+              />
+              <p class="error"> {{ error.password }}</p>
+
             </div>
 
             <div class="col-sm-12 text-center">
@@ -94,90 +69,97 @@
         return {
           user: {
             id: '',
-            userName: '',
+            username: '',
             name: '',
             family: '',
             emailAddress: '',
             password: '',
             role: 'user'
           },
-          errorAlert: {
-            show: false,
-            text: ''
+          error: {
+            username:'',
+            emailAddress: '',
+            password: '',
           },
-
-
       }
       },
 
       methods : {
 
+        validateUsername(){
+          const re = /^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])+$/;
+          let check = re.test(this.user.username);
+          if (check){
+            this.error.username = '';
+          }
+          else{
+            this.error.username = 'نام کاربری باید شامل اعداد و حروف انگلیسی باشد.';
+          }
+          return check;
+        },
+
         validateEmail(){
-            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return re.test(this.user.emailAddress);
+          const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          let check = re.test(this.user.emailAddress);
+          if (check){
+            this.error.emailAddress = '';
+          }
+          else{
+            this.error.emailAddress = 'ایمیل وارد شده صحیح نیست';
+          }
+          return check;
+        },
+
+        validatePassword(){
+          const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
+          let check = re.test(this.user.password);
+          if (check){
+            this.error.password = '';
+          }
+          else{
+            this.error.password = 'پسورد باید حداقل 6 حرف شامل حروف و اعداد انگلیسی باشد';
+          }
+          return check;
         },
 
         registerBtn(){
-          if (this.validateEmail()){
-            this.register();
-          }
-          else{
-            this.errorAlert.text = 'invalid mail!';
-            this.errorAlert.show =true;
-          }
-        },
+          if (this.validateUsername()
+              && this.validateEmail()
+              && this.validatePassword()){
+            //registering
+            this.$http.post('user/register',
+              this.user,
+              {
+                headers: {'SessionID': this.$store.getters.sessionId}
+              }).then(
+              response =>{
+                // success callback
+                response.json().then(
+                  data => {
+                    if (data.error = true){
+                      this.errorAlert=data;
+                    }
+                    else{
+                      this.$store.commit('user',data)
+                    }
+                  }
+                )
+              },
+              error => {
+                // error callback
+              });
 
-        register(){
-          this.$http.post('user/register',
-            this.user,
-            {
-              headers: {'SessionID': this.$store.getters.sessionId}
-            }).then(
-            response =>{
-              // success callback
-              response.json().then(
-                data => {
-                  if (data.error = true){
-                    this.errorAlert=data;
-                  }
-                  else{
-                    this.$store.commit('user',data)
-                  }
-                }
-              )
-            },
-            error => {
-              // error callback
-            });
+          }
+
         },
       },
       mounted() {
-
-        this.$http.get('departments',
-          {
-            headers: {'SessionID': this.$store.getters.sessionId}
-          }).then(
-          response => {
-          // success callback
-              response.json().then(
-                data => {
-                  this.departments = data;
-                }
-              )
-          },
-          error => {
-          // error callback
-
-          });
 
       }
     }
 </script>
 
 <style scoped>
-  .alert {
-    margin: 2vh 0;
-  }
 
   .panel{
     background-image: url('../../assets/img/register-bg.png');
@@ -212,12 +194,20 @@
   .form-control {
     font-size: 12px;
     height: 25px;
-    margin: 20px auto;
+    margin: 30px auto 20px;
     width: 70%;
     padding: 10px;
     @include box-sizing(border-box);
     z-index: 2;
     border-radius: 4px ;
+  }
+
+  .error {
+    direction: rtl;
+    font-size: 10px;
+    margin: -15px auto 0;
+    width: 70%;
+    color: red;
   }
 
   button{
@@ -229,7 +219,7 @@
     height: 34px;
   }
   button:hover {
-    background-color: rgb(48, 63, 159, 0.9);
+    background-color: rgba(48, 63, 159, 0.9);
     color: white;
   }
 

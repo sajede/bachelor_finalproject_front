@@ -4,7 +4,7 @@ const state = {
 
 const getters = {
   sessionId : state => {
-    return state.LogedMode;
+    return state.sessionId;
   }
 };
 
