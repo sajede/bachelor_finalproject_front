@@ -4,7 +4,7 @@ const state = {
     type: 'طلایی',
     topic: 'موضوع',
     sendDate: 'dd/mm/yyyy',
-    proceedingStatus: 'در انتظار جواب',
+    proceedingStatus: 'در انتظار',
     comment: '',
     url: ''
   }

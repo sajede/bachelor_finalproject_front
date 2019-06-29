@@ -4,46 +4,55 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3 class="title font">مشاهده مورد</h3>
+          <h3 class="title font">مشاهده کد ثبت شده</h3>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6 ">
-          <label>نوع مورد</label>
-          <input type="text" v-model="caseParam.type" disabled>
-        </div>
-        <div class="col-md-6">
-          <label>دریافت کننده</label>
-          <input type="text" v-model="caseParam.referrerNumbers" disabled>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6"/>
-        <div class="col-md-6">
-          <label for="topic">عنوان</label>
-          <input type="text" id="topic" v-model="caseParam.topic" disabled>
+        <div class="padd col-md-6 row">
+          <template v-if="caseParam.proceedingStatus != 'در انتظار'">
+            <div class="col-md-12">
+              <label for="reply">توضیحات پاسخ</label>
+              <textarea id="reply" rows="16" v-model="caseParam.comment" disabled/>
+            </div>
+            <div class="col-md-12">
+              <router-link to="/" tag="a" target="_blank" class="upload">
+                دانلود گزارش کد
+              </router-link>
+            </div>
+          </template>
         </div>
 
-      </div>
+        <div class="padd col-md-6 row">
+          <div class="col-md-12">
+            <label>نوع سفارش</label>
+            <select
+              name="type"
+              class="form-control font"
+              v-model="caseParam.type"
+              disabled>
+              <option
+                v-for="type in types"
+                :key="type"
+              >{{ type }}</option>
 
-      <div class="row">
-        <div class="col-md-6"/>
-        <div class="col-md-6 ">
-          <label for="description">شرح مورد</label>
-          <textarea id="description" rows="12" v-model="caseParam.comment" disabled/>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="topic">عنوان</label>
+            <input type="text" id="topic" v-model="caseParam.topic" disabled>
+          </div>
+          <div class="col-md-12">
+            <label for="description">توضیحات</label>
+            <textarea id="description" rows="8" v-model="caseParam.comment" disabled/>
+          </div>
+          <div class="col-md-12">
+            <router-link to="/" tag="a" target="_blank" class="upload">
+              دانلود کد
+            </router-link>
+          </div>
         </div>
       </div>
-      <div v-if="$store.getters.userRole != 'student'" class="col-md-12 text-center">
-        <button class="btn" @click.prevent="closeCase">اقدام و بستن این مورد</button>
-        <button class="btn button1" @click.prevent="refering">ارجاع</button>
-      </div>
-
-      <div v-if="$store.getters.userRole == 'student'" class="col-md-12 text-center">
-        <button class="btn" @click.prevent="backToList">بازشگت</button>
-      </div>
-
 
     </form>
   </div>
@@ -51,41 +60,64 @@
 
 <script>
   export default {
-    name: "SeeCase",
+    name: "NewCase",
     data(){
       return {
         caseParam: {
-          id: '125',
-          sendDate: '12/4/2019',
-          referrerNumbers: 'دکتر شمس فرد (مدیر دانشکده)',
-          topic: 'افزایش ساعات کاری کتابخانه',
-          type: 'درخواست',
-          proceedingStatus: 'باز',
-          satisfactionStatus: '',
-          comment: 'لطفا ساعات کاری کتابخانه در ایاف فرجه ها بیشتر شود',
+          id: '',
+          type: '',
+          topic: '',
+          sendDate: '',
+          proceedingStatus: '',
+          comment: '',
         },
+        reply: {
+          id: '',
+          type: '',
+          topic: '',
+          sendDate: '',
+          proceedingStatus: '',
+          comment: '',
+        },
+        pack: {
+          name: '',
+          count: '',
+          price: '',
+          comment: '',
+          file: ''
+        },
+        types : ['رایگان','طلایی']
       }
     },
-    methods : {
-      closeCase() {
-        this.$router.push('/user/list/'+1);
+    methods: {
+      purchaseBtn(){
+
       },
-      backToList() {
-        this.$router.push('/user/list/'+1);
+      sendBtn(){
+        if (this.caseParam.type=='طلایی' && this.pack.count=='0'){
+
+        }
       },
-      refering() {
-        this.$router.push('/user/refer/'+this.$route.params.id );
-      }
     },
     mounted() {
-      this.user = this.$store.getters.userInfo;
+      this.caseParam = this.$store.getters.case;
+      this.pack = this.$store.getters.pack;
     }
   }
 </script>
 
 <style scoped>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+
   row {
     direction: rtl;
+  }
+
+  .padd {
+    padding: 0 5px;
   }
 
   .form{
@@ -105,18 +137,28 @@
     color: #333333;
   }
 
-  input, textarea, select, option {
+  input, textarea, select, option, .upload {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
   }
 
-  select {
+  select, button {
     height: 40px;
+  }
+
+  .upload {
+    cursor: pointer;
+    font-size: 1.25em;
+    color: white;
+    background-color: rgb(48, 63, 159);
+  }
+
+  .upload:hover {
+    background-color: rgba(48, 63, 159, 0.9);
   }
 
   label{
@@ -127,22 +169,11 @@
 
   button{
     color: white;
-    background-color: #303f9f;
+    padding: 0 20px;
+    background-color: rgb(48, 63, 159);
   }
-
   button:hover {
     color: white;
-    background-color: rgb(48, 63, 159, 0.9);
+    background-color: rgba(48, 63, 159, 0.9);
   }
-
-  .button1{
-    color: white;
-    background-color: rgb(255, 175, 32);
-  }
-
-  .button1:hover {
-    color: white;
-    background-color: rgb(255, 175, 32, 0.8);
-  }
-
 </style>

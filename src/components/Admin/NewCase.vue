@@ -4,33 +4,22 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3 class="title font">مشاهده کد ثبت شده</h3>
+          <h3 class="title font">ثبت کد جدید</h3>
         </div>
       </div>
 
       <div class="row">
-        <div class="padd col-md-6 row">
-          <template v-if="caseParam.proceedingStatus != 'در انتظار'">
-            <div class="col-md-12">
-              <label for="reply">توضیحات پاسخ</label>
-              <textarea id="reply" rows="16" v-model="caseParam.comment" disabled/>
-            </div>
-            <div class="col-md-12">
-              <router-link to="/" tag="a" target="_blank" class="upload">
-                دانلود گزارش کد
-              </router-link>
-            </div>
-          </template>
+        <div class="col-md-6">
+
         </div>
 
-        <div class="padd col-md-6 row">
+        <div class="col-md-6 row">
           <div class="col-md-12">
             <label>نوع سفارش</label>
             <select
               name="type"
               class="form-control font"
-              v-model="caseParam.type"
-              disabled>
+              v-model="caseParam.type">
               <option
                 v-for="type in types"
                 :key="type"
@@ -40,19 +29,28 @@
           </div>
           <div class="col-md-12">
             <label for="topic">عنوان</label>
-            <input type="text" id="topic" v-model="caseParam.topic" disabled>
+            <input type="text" id="topic" v-model="caseParam.topic">
           </div>
           <div class="col-md-12">
             <label for="description">توضیحات</label>
-            <textarea id="description" rows="8" v-model="caseParam.comment" disabled/>
+            <textarea id="description" rows="8" v-model="caseParam.comment"/>
           </div>
           <div class="col-md-12">
-            <router-link to="/" tag="a" target="_blank" class="upload">
-              دانلود کد
-            </router-link>
+            <input type="file" id="file" class="inputfile" v-on="caseParam.file"/>
+            <label for="file">آپلود کد</label>
           </div>
         </div>
       </div>
+      <div class="row">
+
+      </div>
+
+      <div class="col-md-12 text-center">
+        <button class="btn" @click.prevent="sendBtn">ثبت کد</button>
+        <button class="btn" v-if="this.caseParam.type=='طلایی' && this.pack.count=='0'" @click.prevent="purchaseBtn">خرید پکیج طلایی</button>
+      </div>
+
+
 
     </form>
   </div>
@@ -64,14 +62,6 @@
     data(){
       return {
         caseParam: {
-          id: '',
-          type: '',
-          topic: '',
-          sendDate: '',
-          proceedingStatus: '',
-          comment: '',
-        },
-        reply: {
           id: '',
           type: '',
           topic: '',
@@ -116,10 +106,6 @@
     direction: rtl;
   }
 
-  .padd {
-    padding: 0 5px;
-  }
-
   .form{
     direction: rtl;
     max-width:92vw;
@@ -137,7 +123,7 @@
     color: #333333;
   }
 
-  input, textarea, select, option, .upload {
+  input, textarea, select, option, .inputfile + label {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -150,15 +136,25 @@
     height: 40px;
   }
 
-  .upload {
-    cursor: pointer;
-    font-size: 1.25em;
-    color: white;
-    background-color: rgb(48, 63, 159);
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
   }
 
-  .upload:hover {
-    background-color: rgba(48, 63, 159, 0.9);
+  .inputfile + label {
+    cursor: pointer;
+    font-size: 1.25em;
+    color: rgb(48, 63, 159);
+    background-color: rgba(255, 175, 32,0.7);
+  }
+
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    background-color: rgba(255, 175, 32, 0.9);
   }
 
   label{

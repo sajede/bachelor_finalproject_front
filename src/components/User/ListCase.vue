@@ -46,7 +46,7 @@
               type: 'طلایی',
               topic: 'پروزه یونی',
               sendDate: '12/05/2018',
-              proceedingStatus: 'در انتظار جواب',
+              proceedingStatus: 'در انتظار',
               comment: '',
               file: 'http://url'
             },
