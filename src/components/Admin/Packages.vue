@@ -89,17 +89,21 @@
   }
 
   .pack{
-    background: white;
+    /*background: white;*/
+    background-color: rgba(255, 175, 32, 0.4);
     border: solid 1px #d9d9d9;;
     border-radius: 1rem;
     max-width: 80%;
     margin: 5px auto;
+    padding: 3vh 0;
   }
 
   .pack p{
     font-size: 2rem;
     padding: 5px 0;
+    color: rgb(48, 63, 159);
   }
+
   .pack button {
     padding: 10px 20px;
     margin: 10px auto;

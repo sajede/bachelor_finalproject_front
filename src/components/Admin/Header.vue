@@ -5,8 +5,7 @@
         <ul class="nav nav-pills nav-justified">
           <router-link to="/admin" tag="li" class="nav-item" active-class="active" exact><a>بسته ها</a></router-link>
           <router-link to="/admin/list/1" tag="li" class="nav-item" active-class="active" exact><a>مشاهده کدهای ثبت شده</a></router-link>
-          <router-link to="/help" tag="li" class="nav-item" active-class="active" exact><a>راهنما</a></router-link>
-        </ul>
+          </ul>
       </div>
     </nav>
 

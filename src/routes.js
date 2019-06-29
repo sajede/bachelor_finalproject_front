@@ -10,7 +10,7 @@ import UserSeeCase from "./components/User/SeeCase";
 
 import Admin from "./components/Admin/Admin";
 import AdminPackages from "./components/Admin/Packages";
-import AdminNewCase from "./components/Admin/ActCase";
+import AdminNewPack from "./components/Admin/NewPack";
 import AdminListCase from "./components/Admin/ListCase";
 import AdminSeeCase from "./components/Admin/SeeCase";
 
@@ -28,7 +28,7 @@ export const routes = [
     ]},
   { path: '/admin', component: Admin, children:[
       { path: '', component: AdminPackages},
-      { path: 'new', component: AdminNewCase},
+      { path: 'new', component: AdminNewPack},
       { path: 'list/:page', component: AdminListCase},
       { path: 'case/:id', component: AdminSeeCase},
     ]},
