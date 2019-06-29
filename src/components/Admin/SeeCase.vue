@@ -18,6 +18,11 @@
             <input type="file" id="file" class="inputfile" v-on="reply.file"/>
             <label for="file">آپلود گزارش کد</label>
           </div>
+          <div class="col-md-12">
+            <router-link to="/admin/list/1" @click.prevent="sendBtn" class="upload">
+              ارسال پاسخ
+            </router-link>
+          </div>
         </div>
 
         <div class="padd col-md-6 row">
@@ -88,9 +93,7 @@
 
       },
       sendBtn(){
-        if (this.caseParam.type=='طلایی' && this.pack.count=='0'){
 
-        }
       },
     },
     mounted() {
