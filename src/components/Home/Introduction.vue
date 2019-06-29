@@ -1,23 +1,29 @@
 <template>
   <div class="panel">
     <div class="row text-center">
-      <h3  class="title font">خصوصیات پنل آسا</h3>
+      <h3  class="title font">برای استفاده از smart aeg</h3>
     </div>
 
     <div class="row text-center">
       <div class="col-md-4">
-        <img src="../../assets/img/ic3.png">
-        <h6 class="font subtitle">استادان، کارمندان و همه ی مسئولین دانشگاه، در جهت داشتن دانشگاه بهتر همکاری خواهند کرد</h6>
+        <img src="../../assets/img/ic1.png">
+        <h6 class="font subtitle">
+          1. وارد سایت شوید
+        </h6>
       </div>
 
       <div class="col-md-4">
         <img src="../../assets/img/ic2.png">
-        <h6 class="font subtitle">هر نوع انتقاد، پیشنهاد، ایده و نظر در قالب -مورد- ثبت و به مسئول مربوطه ارجاع داده میشود.</h6>
+        <h6 class="font subtitle">
+          2. کد خود را آپلود کنید
+        </h6>
       </div>
 
       <div class="col-md-4">
-        <img src="../../assets/img/ic1.png">
-        <h6 class="font subtitle">در هر سازمان یا تشکلی، قطعا کمی ها و کاستی هایی وجود دارد که باعث نارضایتی و کاهش عملکرد اعضا میشود.</h6>
+        <img src="../../assets/img/ic3.png">
+        <h6 class="font subtitle">
+          3. گزارش نتیجه را دانلود کنید
+        </h6>
       </div>
     </div>
 
@@ -33,22 +39,25 @@
 <style scoped>
 
   .panel{
-    background-color: #ffaf20;
+    /*background-color: #ffaf20;*/
     padding: 10vh 0 15vh 0;
     position: relative;
   }
 
   .title{
-    color: white;
-    -webkit-text-stroke: 0.3px #797979;
+    direction: rtl;
+    color: rgb(48, 63, 159);
+    -webkit-text-stroke: 0.5px rgba(48, 63, 159, 0.4);
     font-size: 27px;
     font-weight: bold;
-    text-shadow: 0 2px 4px #000000;
+  }
+
+  img {
+    width: 90%;
   }
 
   .subtitle{
     direction: rtl;
-    color: white;
     font-size: 20px;
     padding: 2vw 3vw;
   }

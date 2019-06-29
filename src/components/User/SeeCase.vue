@@ -73,7 +73,7 @@
           file: ''
         },
         reply: {
-          comment: '',
+          comment: 'گزارش شما با کد #102586 ثبت شد',
           file: 'http://dl'
         },
         pack: {
