@@ -15,8 +15,11 @@ const getters = {
 
 const mutations = {
   pack : (state, newpack) => {
-    state.caseParam = newpack;
-  }
+    state.pack = newpack;
+  },
+  addCount : (state, count) => {
+    state.pack.count = Number(state.pack.count) + Number(count);
+  },
 };
 
 export default {
