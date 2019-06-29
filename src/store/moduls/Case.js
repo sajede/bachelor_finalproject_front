@@ -6,14 +6,22 @@ const state = {
     sendDate: 'dd/mm/yyyy',
     proceedingStatus: 'در انتظار',
     comment: '',
-    file: 'http://dl'
+    file: 'http://dl',
+    reply: {
+      comment: 'گزارش شما با کد #102586 ثبت شد',
+      file: 'http://dl',
+    }
   }
 };
 
 const getters = {
   case : state => {
     return state.caseParam;
+  },
+  caseReply : state => {
+    return state.case.reply;
   }
+
 };
 
 const mutations = {

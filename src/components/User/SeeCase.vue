@@ -13,10 +13,10 @@
           <template v-if="caseParam.proceedingStatus != 'در انتظار'">
             <div class="col-md-12">
               <label for="reply">توضیحات پاسخ</label>
-              <textarea id="reply" rows="16" v-model="reply.comment" disabled/>
+              <textarea id="reply" rows="16" v-model="caseParam.reply.comment" disabled/>
             </div>
             <div class="col-md-12">
-              <a :href="reply.file" target="_blank" class="upload">
+              <a :href="caseParam.reply.file" target="_blank" class="upload">
                 دانلود گزارش کد
               </a>
             </div>
@@ -70,11 +70,11 @@
           sendDate: '',
           proceedingStatus: '',
           comment: '',
-          file: ''
-        },
-        reply: {
-          comment: 'گزارش شما با کد #102586 ثبت شد',
-          file: 'http://dl'
+          file: '',
+          reply: {
+            comment: '',
+            file: '',
+          }
         },
         pack: {
           name: '',
