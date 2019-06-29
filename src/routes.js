@@ -11,7 +11,6 @@ import UserSeeCase from "./components/User/SeeCase";
 import Admin from "./components/Admin/Admin";
 import AdminNewCase from "./components/Admin/ActCase";
 import AdminListCase from "./components/Admin/ListCase";
-import AdminProfile from "./components/Admin/Profile";
 import AdminSeeCase from "./components/Admin/SeeCase";
 
 

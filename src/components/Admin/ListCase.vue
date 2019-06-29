@@ -55,7 +55,7 @@
       },
       methods : {
         seeCase: function(id) {
-          this.$router.push('/user/case/'+id);
+          this.$router.push('/admin/case/'+id);
         }
       }
     }

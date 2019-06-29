@@ -6,7 +6,7 @@ const state = {
     sendDate: 'dd/mm/yyyy',
     proceedingStatus: 'در انتظار',
     comment: '',
-    url: ''
+    file: 'http://dl'
   }
 };
 

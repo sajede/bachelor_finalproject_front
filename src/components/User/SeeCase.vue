@@ -13,12 +13,12 @@
           <template v-if="caseParam.proceedingStatus != 'در انتظار'">
             <div class="col-md-12">
               <label for="reply">توضیحات پاسخ</label>
-              <textarea id="reply" rows="16" v-model="caseParam.comment" disabled/>
+              <textarea id="reply" rows="16" v-model="reply.comment" disabled/>
             </div>
             <div class="col-md-12">
-              <router-link to="/" tag="a" target="_blank" class="upload">
+              <a :href="reply.file" target="_blank" class="upload">
                 دانلود گزارش کد
-              </router-link>
+              </a>
             </div>
           </template>
         </div>
@@ -47,9 +47,9 @@
             <textarea id="description" rows="8" v-model="caseParam.comment" disabled/>
           </div>
           <div class="col-md-12">
-            <router-link to="/" tag="a" target="_blank" class="upload">
+            <a :href="caseParam.file" target="_blank" class="upload">
               دانلود کد
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -70,14 +70,11 @@
           sendDate: '',
           proceedingStatus: '',
           comment: '',
+          file: ''
         },
         reply: {
-          id: '',
-          type: '',
-          topic: '',
-          sendDate: '',
-          proceedingStatus: '',
           comment: '',
+          file: 'http://dl'
         },
         pack: {
           name: '',

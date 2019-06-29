@@ -10,17 +10,14 @@
 
       <div class="row">
         <div class="padd col-md-6 row">
-          <template v-if="caseParam.proceedingStatus != 'در انتظار'">
-            <div class="col-md-12">
-              <label for="reply">توضیحات پاسخ</label>
-              <textarea id="reply" rows="16" v-model="caseParam.comment" disabled/>
-            </div>
-            <div class="col-md-12">
-              <router-link to="/" tag="a" target="_blank" class="upload">
-                دانلود گزارش کد
-              </router-link>
-            </div>
-          </template>
+          <div class="col-md-12">
+            <label for="reply">توضیحات پاسخ</label>
+            <textarea id="reply" rows="16" v-model="reply.comment"/>
+          </div>
+          <div class="col-md-12">
+            <input type="file" id="file" class="inputfile" v-on="reply.file"/>
+            <label for="file">آپلود گزارش کد</label>
+          </div>
         </div>
 
         <div class="padd col-md-6 row">
@@ -47,9 +44,9 @@
             <textarea id="description" rows="8" v-model="caseParam.comment" disabled/>
           </div>
           <div class="col-md-12">
-            <router-link to="/" tag="a" target="_blank" class="upload">
+            <a :href="caseParam.file" target="_blank" class="upload">
               دانلود کد
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -70,14 +67,11 @@
           sendDate: '',
           proceedingStatus: '',
           comment: '',
+          file:''
         },
         reply: {
-          id: '',
-          type: '',
-          topic: '',
-          sendDate: '',
-          proceedingStatus: '',
           comment: '',
+          file:''
         },
         pack: {
           name: '',
@@ -137,7 +131,7 @@
     color: #333333;
   }
 
-  input, textarea, select, option, .upload {
+  input, textarea, select, option, .upload,.inputfile + label {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -159,6 +153,27 @@
 
   .upload:hover {
     background-color: rgba(48, 63, 159, 0.9);
+  }
+
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .inputfile + label {
+    cursor: pointer;
+    font-size: 1.25em;
+    color: rgb(48, 63, 159);
+    background-color: rgba(255, 175, 32,0.7);
+  }
+
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    background-color: rgba(255, 175, 32, 0.9);
   }
 
   label{
