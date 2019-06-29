@@ -5,6 +5,7 @@ import user from './moduls/User';
 import sessionId from './moduls/Session';
 import caseParam from './moduls/Case';
 import pack from './moduls/Pack';
+import packs from './moduls/Packs';
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export const store = new Vuex.Store({
     user,
     sessionId,
     caseParam,
-    pack
+    pack,
+    packs
   }
 });
