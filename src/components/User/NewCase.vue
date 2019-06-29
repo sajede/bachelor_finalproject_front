@@ -62,6 +62,7 @@
     data(){
       return {
         caseParam: {
+          id: '',
           type: '',
           topic: '',
           sendDate: '',

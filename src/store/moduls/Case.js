@@ -1,5 +1,6 @@
 const state = {
   caseParam: {
+    id: '',
     type: 'طلایی',
     topic: 'موضوع',
     sendDate: 'dd/mm/yyyy',
