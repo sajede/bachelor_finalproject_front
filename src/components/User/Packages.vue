@@ -4,9 +4,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <router-link to="admin/new" tag="button" class="btn" @click.prevent="addBtn">
-            <span class="glyphicon glyphicon-plus"></span>
-          </router-link>
+          <h3 class="title font">ثبت کد جدید</h3>
         </div>
       </div>
 
@@ -85,6 +83,13 @@
     border-radius: 1rem;
     z-index: 1;
     padding: 3vh 3vw 8vh;
+  }
+
+  .title{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px ;
   }
 
   .pack{

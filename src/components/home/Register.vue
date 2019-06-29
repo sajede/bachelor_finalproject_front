@@ -13,7 +13,7 @@
 
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="title font">سامانه رسیدگی به پیشنهادات و انتقادات دانشجویان دانشگاه شهید بهشتی</h2>
+        <h2 class="title font">به سایت secure code خوش آمدید</h2>
       </div>
     </div>
 
@@ -40,11 +40,12 @@
   }
 
   .title{
-    color: white;
-    -webkit-text-stroke: 1px #797979;
+    direction: rtl;
+    background: rgba(255,255,255,0.3);
+    line-height: 10rem;
+    color: rgb(48, 63, 159);
     font-size: 27px;
     font-weight: bold;
-    text-shadow: 0 2px 4px #000000;
   }
 
   button {
