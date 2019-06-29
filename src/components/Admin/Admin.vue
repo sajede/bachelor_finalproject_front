@@ -1,6 +1,6 @@
 <template>
     <div>
-      <user-header></user-header>
+      <admin-header></admin-header>
       <router-view></router-view>
     </div>
 </template>
@@ -10,9 +10,9 @@
     import Header from "./Header";
 
     export default {
-      name: "User",
+      name: "Admin",
       components : {
-        userHeader: Header,
+        adminHeader: Header,
 
       }
     }
