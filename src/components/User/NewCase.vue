@@ -68,6 +68,11 @@
           sendDate: '',
           proceedingStatus: '',
           comment: '',
+          file: '',
+          reply: {
+            comment: '',
+            file: '',
+          }
         },
         pack: {
           name: '',

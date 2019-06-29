@@ -48,7 +48,11 @@
               sendDate: '12/05/2018',
               proceedingStatus: 'در انتظار',
               comment: '',
-              file: 'http://url'
+              file: 'http://url',
+              reply: {
+                comment: '',
+                file: '',
+              }
             },
           ],
         }

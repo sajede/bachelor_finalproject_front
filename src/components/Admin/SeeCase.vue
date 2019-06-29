@@ -12,10 +12,10 @@
         <div class="padd col-md-6 row">
           <div class="col-md-12">
             <label for="reply">توضیحات پاسخ</label>
-            <textarea id="reply" rows="16" v-model="reply.comment"/>
+            <textarea id="reply" rows="16" v-model="caseParam.reply.comment"/>
           </div>
           <div class="col-md-12">
-            <input type="file" id="file" class="inputfile" v-on="reply.file"/>
+            <input type="file" id="file" class="inputfile" v-on="caseParam.reply.file"/>
             <label for="file">آپلود گزارش کد</label>
           </div>
           <div class="col-md-12">
@@ -72,11 +72,11 @@
           sendDate: '',
           proceedingStatus: '',
           comment: '',
-          file:''
-        },
-        reply: {
-          comment: '',
-          file:''
+          file:'',
+          reply: {
+            comment: '',
+            file:''
+          }
         },
         pack: {
           name: '',
