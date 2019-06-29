@@ -27,11 +27,9 @@ export const routes = [
       { path: 'case/:id', component: UserSeeCase},
     ]},
   { path: '/admin', component: Admin, children:[
-      { path: '', component: AdminProfile},
-      { path: 'newcase', component: AdminNewCase},
+      { path: '', component: AdminNewCase},
       { path: 'list/:page', component: AdminListCase},
       { path: 'case/:id', component: AdminSeeCase},
-      // { path: 'refer/:id', component: Refer}
     ]},
   { path: '*', redirect: '/'}
 ];
