@@ -63,7 +63,7 @@
     width: 100%;
     background-color: #ffaf20;
     padding: 30px 70px;
-
+    margin: 0;
   }
 
   .social, .location, .contact, .university{
